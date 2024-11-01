@@ -1,0 +1,8 @@
+Scenes.txt
+
+# Last update: Fri Nov  1 16:59:31 JST 2024
+
+Scene-0:
+  sketch_20241101a_SimpleBlink
+  sketch_20241101b_BlinkoverI2C
+
