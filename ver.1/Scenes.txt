@@ -4,5 +4,5 @@ Scenes.txt
 
 Scene-0:
   sketch_20241101a_SimpleBlink
-  sketch_20241101b_BlinkoverI2C
+  sketch_20241101b_BlinkOverI2C
 
