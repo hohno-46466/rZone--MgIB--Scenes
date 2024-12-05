@@ -1,8 +1,9 @@
 Scenes.txt
 
-# Last update: Fri Nov  1 16:59:31 JST 2024
+# Prev update: Fri Nov  1 16:59:31 JST 2024
+# Last update: Fri Dec  6 05:57:23 JST 2024
 
-Scene-0:
-  sketch_20241101a_SimpleBlink
+Scene-00:
+  (N/A) sketch_20241101a_SimpleBlink
   sketch_20241101b_BlinkOverI2C
 
