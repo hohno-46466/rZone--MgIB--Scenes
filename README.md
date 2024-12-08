@@ -7,6 +7,25 @@ Sketches and scripts for MgIB scenes
      └──  ver.1/
          ├──  README.md
          ├──  Scene-00/
+         │   ├──  Makefile
+         │   ├──  README.md
+         │   ├──  sketch_00_20241206a_Blink/
+         │   │   └──  sketch_00_20241206a_Blink.ino
+         │   ├──  sketch_01_20241101a_BlinkOverI2C/
+         │   │   └──  sketch_01_20241101a_BlinkOverI2C.ino
+         │   └──  sketch_xx_20241208a_dummy/
+         │       └──  sketch_xx_20241208a_dummy.ino
+         ├──  Scene-10/
+         │   └──  README.md
+         └──  Scenes.txt
+     
+     7 directories, 9 files (Mon Dec  9 06:32:49 JST 2024)
+
+    ./rZone--MgIB--Scenes
+     ├──  README.md
+     └──  ver.1/
+         ├──  README.md
+         ├──  Scene-00/
          │   ├──  README.md
          │   └──  sketch_20241101a_BlinkOverI2C/
          │       └──  sketch_20241101a_BlinkOverI2C.ino
