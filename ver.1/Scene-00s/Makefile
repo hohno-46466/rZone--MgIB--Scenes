@@ -1,11 +1,16 @@
 
 # Makefile
 
-# try like:
-# $ make --debug 00
-# $ make --debug 00 ARDPORT=/dev/cu.usbmodem1101
+# Last update: Mon Dec  9 09:15:28 JST 2024
+
+# Examples:
+# $ make --debug 00v
+# $ make --debug 00u ARDPORT=/dev/cu.usbmodem1101
 # $ export ARDPORT=/dev/cu.usbmodem2101
-# $ make --debug 00
+# $ make 00show
+# $ make 00verify
+# $ make 00upload
+# $ make 00run
 
 ARDPORT ?= /dev/cu.usbmodem2101
 
@@ -29,6 +34,8 @@ TARGET_00 = sketch_00_20241206a_Blink
 
 00show:		00s
 
+00run:		00r
+
 00:	00u
 
 00b:	00u
@@ -42,6 +49,9 @@ TARGET_00 = sketch_00_20241206a_Blink
 00s:
 	$(MAKE) show TARGET=$(TARGET_00)
 
+00r:
+	(cat -u | su cu -s 57600 -l $(TARGET_00)) | sed -u -e 's/\\r//g'
+
 # ----------------------------------------------------------
 
 TARGET_01 = sketch_01_20241101a_BlinkOverI2C
@@ -53,6 +63,8 @@ TARGET_01 = sketch_01_20241101a_BlinkOverI2C
 01verity	01v
 
 01show:		01s
+
+01run:		01r
 
 01:	01u
 
@@ -66,6 +78,9 @@ TARGET_01 = sketch_01_20241101a_BlinkOverI2C
 
 01s:
 	$(MAKE) show TARGET=$(TARGET_01)
+
+01r:
+	(cat -u | su cu -s 57600 -l $(TARGET_01)) | sed -u -e 's/\\r//g'
 
 # ----------------------------------------------------------
 
