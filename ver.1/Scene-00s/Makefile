@@ -1,7 +1,8 @@
 
 # Makefile
 
-# Last update: Mon Dec  9 09:15:28 JST 2024
+# Prev update: Mon Dec  9 09:15:28 JST 2024
+# Last update: Sun Dec 15 05:51:30 JST 2024
 
 # Examples:
 # $ make --debug 00v
@@ -20,6 +21,10 @@ TARGET = sketch_xx_20241208a_dummy
 
 # ----------------------------------------------------------
 
+targets:
+	awk -F':' '/^[a-zA-Z0-9_.-]+:/ { print $1 }' Makefile | sed -e 's/:.*$$//' | egrep -v '^[0-9]' | cat -n
+	awk -F':' '/^[a-zA-Z0-9_.-]+:/ { print $1 }' Makefile | sed -e 's/:.*$$//' | egrep '^[0-9]' | egrep -v '^[0-9][0-9]$$|^[0-9][0-9][a-z]$$'| cat -n
+
 all:	show
 
 # ----------------------------------------------------------
@@ -30,7 +35,7 @@ TARGET_00 = sketch_00_20241206a_Blink
 
 00upload:	00u
 
-00verity	00v
+00verity:	00v
 
 00show:		00s
 
@@ -38,7 +43,7 @@ TARGET_00 = sketch_00_20241206a_Blink
 
 00:	00u
 
-00b:	00u
+00b:	00v
 
 00u:
 	$(MAKE) build TARGET=$(TARGET_00)
@@ -60,7 +65,7 @@ TARGET_01 = sketch_01_20241101a_BlinkOverI2C
 
 01upload:	01u
 
-01verity	01v
+01verity:	01v
 
 01show:		01s
 
@@ -68,7 +73,7 @@ TARGET_01 = sketch_01_20241101a_BlinkOverI2C
 
 01:	01u
 
-01b:	01u
+01b:	01v
 
 01u:
 	$(MAKE) upload TARGET=$(TARGET_01)
