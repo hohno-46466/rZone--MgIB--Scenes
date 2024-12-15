@@ -2,12 +2,15 @@
 
 void setup() {
   pinMode(LEDPIN, OUTPUT);
+  Serial.begin(57600);
 }
 
 void loop() {
   digitalWrite(LEDPIN, HIGH);
-  delay(100);
+  Serial.print(millis()); Serial.print("\t"); Serial.println("1");
+  delay(500);
   digitalWrite(LEDPIN, LOW);
-  delay(900);
+  Serial.print(millis()); Serial.print("\t"); Serial.println("0");
+  delay(500);
 }
 
