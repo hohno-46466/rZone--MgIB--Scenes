@@ -21,80 +21,87 @@ TARGET = sketch_xx_20241208a_dummy
 
 # ----------------------------------------------------------
 
-targets:
-	awk -F':' '/^[a-zA-Z0-9_.-]+:/ { print $1 }' Makefile | sed -e 's/:.*$$//' | egrep -v '^[0-9]' | cat -n
-	awk -F':' '/^[a-zA-Z0-9_.-]+:/ { print $1 }' Makefile | sed -e 's/:.*$$//' | egrep '^[0-9]' | egrep -v '^[0-9][0-9]$$|^[0-9][0-9][a-z]$$'| cat -n
+default: targets
 
-all:	show
+targets:
+	@(awk -F':' '/^[a-zA-Z0-9_.-]+:/ { print $1 }' Makefile | sed -e 's/:.*$$//' | egrep -v '^S[0-9]'; awk -F':' '/^[a-zA-Z0-9_.-]+:/ { print $1 }' Makefile | sed -e 's/:.*$$//' | egrep '^S[0-9]' | egrep -v '^S[0-9][0-9]$$|^S[0-9][0-9][a-z]$$') | cat -n
 
 # ----------------------------------------------------------
 
 TARGET_00 = sketch_00_20241206a_Blink
 
-00show:		00s
+S00targets:	S00t
 
-00edit:		00e
+S00show:		S00s
 
-00build:	00b
+S00edit:		S00e
 
-00verity:	00v
+S00build:	S00b
 
-00upload:	00u
+S00verity:	S00v
 
-00run:		00r
+S00upload:	S00u
 
-00:	00s 00v 00u 00r
+S00run:		S00r
 
-00s:
+S00:	S00s 00v 00u 00r
+
+S00t:	targets
+
+S00s:
 	$(MAKE) show TARGET=$(TARGET_00)
 
-00e:
+S00e:
 	$(MAKE) edit TARGET=$(TARGET_00)
 
-00b:	00v
+S00b:	S00v
 
-00v:
+S00v:
 	$(MAKE) verify TARGET=$(TARGET_00)
 
-00u:
+S00u:
 	$(MAKE) upload TARGET=$(TARGET_00)
 
-00r:
+S00r:
 	$(MAKE) run TARGET=$(TARGET_00)
 
 # ----------------------------------------------------------
 
 TARGET_01 = sketch_01_20241101a_BlinkOverI2C
 
-01show:		01s
+S01targets:		S01t
 
-01edit:		01e
+S01show:		S01s
 
-01build:	01b
+S01edit:		S01e
 
-01verity:	01v
+S01build:	S01b
 
-01upload:	01u
+S01verity:	S01v
 
-01run:		01r
+S01upload:	S01u
 
-01:	01s 01v 01u 01r
+S01run:		S01r
 
-01s:
+S01:	S01s 01v 01u 01r
+
+S01t:	targets
+
+S01s:
 	$(MAKE) show TARGET=$(TARGET_01)
 
-01e:
+S01e:
 	$(MAKE) edit TARGET=$(TARGET_01)
 
-01b:	01v
+S01b:	S01v
 
-01v:
+S01v:
 	$(MAKE) verify TARGET=$(TARGET_01)
 
-01u:
+S01u:
 	$(MAKE) upload TARGET=$(TARGET_01)
 
-01r:
+S01r:
 	$(MAKE) run TARGET=$(TARGET_01)
 
 # ----------------------------------------------------------
@@ -105,7 +112,8 @@ build:	verify
 show:
 	(cd $(TARGET) \
 	&& cat -n $(TARGET).ino)
-	@echo "Note: use sed -n 's/^[[:space:]]*[0-9][0-9]*[[:space:]]//p' to pick up sketch from the result above."
+	@echo "Note: To extract the sketch from this result, execute the following command:"
+	@echo "      $$ make ... | sed -n 's/^[[:space:]]*[0-9][0-9]*[[:space:]]//p'"
 
 edit:
 	(cd $(TARGET) \
