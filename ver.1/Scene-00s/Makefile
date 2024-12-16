@@ -3,6 +3,7 @@
 
 # Prev update: Mon Dec  9 09:15:28 JST 2024
 # Last update: Sun Dec 15 05:51:30 JST 2024
+# Last update: Mon Dec 16 18:25:25 JST 2024
 
 # Examples:
 # $ make --debug 00v
@@ -36,9 +37,13 @@ S00show:	S00s
 
 S00edit:	S00e
 
-S00build:	S00b
+S00info:	S00i
 
-S00verity:	S00v
+S00readme:	S00i
+
+S00build:	S00v
+
+S00verify:	S00v
 
 S00upload:	S00u
 
@@ -56,7 +61,8 @@ S00s:
 S00e:
 	$(MAKE) edit TARGET=$(TARGET_00)
 
-S00b:	S00v
+S00i:
+	$(MAKE) readme TARGET=$(TARGET_00)
 
 S00v:
 	$(MAKE) verify TARGET=$(TARGET_00)
@@ -77,9 +83,13 @@ S01show:	S01s
 
 S01edit:	S01e
 
-S01build:	S01b
+S01info:	S01i
 
-S01verity:	S01v
+S01readme:	S01i
+
+S01build:	S01v
+
+S01verify:	S01v
 
 S01upload:	S01u
 
@@ -97,7 +107,8 @@ S01s:
 S01e:
 	$(MAKE) edit TARGET=$(TARGET_01)
 
-S01b:	S01v
+S01i:
+	$(MAKE) readme TARGET=$(TARGET_01)
 
 S01v:
 	$(MAKE) verify TARGET=$(TARGET_01)
@@ -120,8 +131,10 @@ show:
 	@echo "      $$ make ... | sed -n 's/^[[:space:]]*[0-9][0-9]*[[:space:]]//p'"
 
 edit:
-	(cd $(TARGET) \
-	&& code $(TARGET).ino)
+	(cd $(TARGET) && code $(TARGET).ino)
+
+readme:
+	(cd $(TARGET) && code README.md)
 
 verify:
 	( cd $(TARGET) \

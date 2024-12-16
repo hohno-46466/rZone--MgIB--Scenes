@@ -20,6 +20,7 @@ void setup() {
   pinMode(13, OUTPUT);            // Arduino 13 番ピンを出力に設定
   Serial.begin(57600);
   Wire.begin();
+  Serial.println("Hello, world!");
 
   // PCAL9554B の初期設定
   Wire.beginTransmission(PCAL9554B_ADDRESS);
