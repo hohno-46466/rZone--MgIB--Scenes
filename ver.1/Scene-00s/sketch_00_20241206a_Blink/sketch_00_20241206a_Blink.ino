@@ -13,4 +13,3 @@ void loop() {
   Serial.print(millis()); Serial.print("\t"); Serial.println("0");
   delay(100);
 }
-

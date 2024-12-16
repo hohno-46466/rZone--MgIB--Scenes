@@ -5,14 +5,18 @@
 # Last update: Sun Dec 15 05:51:30 JST 2024
 # Last update: Mon Dec 16 18:25:25 JST 2024
 
+# ----------------------------------------------------------
+
 # Examples:
-# $ make --debug 00v
-# $ make --debug 00u ARDPORT=/dev/cu.usbmodem1100
+# $ make --debug S00v
+# $ make --debug S00u ARDPORT=/dev/cu.usbmodem1100
 # $ export ARDPORT=/dev/cu.usbmodem2101
-# $ make 00show
-# $ make 00verify
-# $ make 00upload
-# $ make 00run
+# $ make S00show
+# $ make S00verify
+# $ make S00upload
+# $ make S00run
+
+# ----------------------------------------------------------
 
 ARDPORT ?= /dev/cu.usbmodem2101
 
@@ -56,22 +60,22 @@ S00t:
 	make targets | grep '^S00' | cat -n
 
 S00s:
-	$(MAKE) show TARGET=$(TARGET_00)
+	$(MAKE) _show TARGET=$(TARGET_00)
 
 S00e:
-	$(MAKE) edit TARGET=$(TARGET_00)
+	$(MAKE) _edit TARGET=$(TARGET_00)
 
 S00i:
-	$(MAKE) readme TARGET=$(TARGET_00)
+	$(MAKE) _readme TARGET=$(TARGET_00)
 
 S00v:
-	$(MAKE) verify TARGET=$(TARGET_00)
+	$(MAKE) _verify TARGET=$(TARGET_00)
 
 S00u:
-	$(MAKE) upload TARGET=$(TARGET_00)
+	$(MAKE) _upload TARGET=$(TARGET_00)
 
 S00r:
-	$(MAKE) run TARGET=$(TARGET_00)
+	$(MAKE) _run TARGET=$(TARGET_00)
 
 # ----------------------------------------------------------
 
@@ -102,49 +106,47 @@ S01t:
 	$(MAKE) targets | grep '^S01' | cat -n
 
 S01s:
-	$(MAKE) show TARGET=$(TARGET_01)
+	$(MAKE) _show TARGET=$(TARGET_01)
 
 S01e:
-	$(MAKE) edit TARGET=$(TARGET_01)
+	$(MAKE) _edit TARGET=$(TARGET_01)
 
 S01i:
-	$(MAKE) readme TARGET=$(TARGET_01)
+	$(MAKE) _readme TARGET=$(TARGET_01)
 
 S01v:
-	$(MAKE) verify TARGET=$(TARGET_01)
+	$(MAKE) _verify TARGET=$(TARGET_01)
 
 S01u:
-	$(MAKE) upload TARGET=$(TARGET_01)
+	$(MAKE) _upload TARGET=$(TARGET_01)
 
 S01r:
-	$(MAKE) run TARGET=$(TARGET_01)
+	$(MAKE) _run TARGET=$(TARGET_01)
 
 # ----------------------------------------------------------
 
 
-build:	verify
-
-show:
+_show:
 	(cd $(TARGET) \
 	&& cat -n $(TARGET).ino)
 	@echo "Note: To extract the sketch from this result, execute the following command:"
 	@echo "      $$ make ... | sed -n 's/^[[:space:]]*[0-9][0-9]*[[:space:]]//p'"
 
-edit:
+_edit:
 	(cd $(TARGET) && code $(TARGET).ino)
 
-readme:
+_readme:
 	(cd $(TARGET) && code README.md)
 
-verify:
+_verify:
 	( cd $(TARGET) \
 	&& arduino-cli compile --fqbn $(FQBN) $(TARGET).ino )
 
-upload:
+_upload:
 	( cd $(TARGET) \
 	&& arduino-cli upload --fqbn $(FQBN) -p $(ARDPORT) )
 
-run:
+_run:
 	sudo date
 	(cat -u | sudo cu -s 57600 -l $(ARDPORT)) | sed -u -e 's/\\r//g'
 
