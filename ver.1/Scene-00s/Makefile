@@ -24,7 +24,7 @@ TARGET = sketch_xx_20241208a_dummy
 default: targets
 
 targets:
-	@(awk -F':' '/^[a-zA-Z0-9_.-]+:/ { print $1 }' Makefile | sed -e 's/:.*$$//' | egrep -v '^S[0-9]'; awk -F':' '/^[a-zA-Z0-9_.-]+:/ { print $1 }' Makefile | sed -e 's/:.*$$//' | egrep '^S[0-9]' | egrep -v '^S[0-9][0-9]$$|^S[0-9][0-9][a-z]$$') | cat -n
+	@(awk -F':' '/^[a-zA-Z0-9_.-]+:/ { print $1 }' Makefile | sed -e 's/:.*$$//' | egrep -v '^S[0-9]'; awk -F':' '/^[a-zA-Z0-9_.-]+:/ { print $1 }' Makefile | sed -e 's/:.*$$//' | egrep '^S[0-9]' | egrep -v '^S[0-9][0-9]$$|^S[0-9][0-9][a-z]$$')
 
 # ----------------------------------------------------------
 
@@ -32,9 +32,9 @@ TARGET_00 = sketch_00_20241206a_Blink
 
 S00targets:	S00t
 
-S00show:		S00s
+S00show:	S00s
 
-S00edit:		S00e
+S00edit:	S00e
 
 S00build:	S00b
 
@@ -46,7 +46,9 @@ S00run:		S00r
 
 S00:	S00s 00v 00u 00r
 
-S00t:	targets
+S00t:
+	@/bin/echo -n "$$ "
+	make targets | grep '^S00' | cat -n
 
 S00s:
 	$(MAKE) show TARGET=$(TARGET_00)
@@ -69,11 +71,11 @@ S00r:
 
 TARGET_01 = sketch_01_20241101a_BlinkOverI2C
 
-S01targets:		S01t
+S01targets:	S01t
 
-S01show:		S01s
+S01show:	S01s
 
-S01edit:		S01e
+S01edit:	S01e
 
 S01build:	S01b
 
@@ -85,7 +87,9 @@ S01run:		S01r
 
 S01:	S01s 01v 01u 01r
 
-S01t:	targets
+S01t:
+	@/bin/echo -n "$$ "
+	$(MAKE) targets | grep '^S01' | cat -n
 
 S01s:
 	$(MAKE) show TARGET=$(TARGET_01)
