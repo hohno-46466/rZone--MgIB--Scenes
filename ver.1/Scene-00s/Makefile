@@ -53,7 +53,7 @@ S00upload:	S00u
 
 S00run:		S00r
 
-S00:	S00s 00v 00u 00r
+S00:	S00s S00v S00u S00r
 
 S00t:
 	@/bin/echo -n "$$ "
@@ -99,7 +99,7 @@ S01upload:	S01u
 
 S01run:		S01r
 
-S01:	S01s 01v 01u 01r
+S01:	S01s S01v S01u S01r
 
 S01t:
 	@/bin/echo -n "$$ "
