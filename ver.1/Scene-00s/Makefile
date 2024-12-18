@@ -2,8 +2,9 @@
 # Makefile
 
 # Prev update: Mon Dec  9 09:15:28 JST 2024
-# Last update: Sun Dec 15 05:51:30 JST 2024
-# Last update: Mon Dec 16 18:25:25 JST 2024
+# Prev update: Sun Dec 15 05:51:30 JST 2024
+# Prev update: Mon Dec 16 18:25:25 JST 2024
+# Last update: Tue Dec 17 09:02:38 JST 2024
 
 # ----------------------------------------------------------
 
@@ -35,96 +36,79 @@ targets:
 
 TARGET_00 = sketch_00_20241206a_Blink
 
-S00targets:	S00t
+S00:	S00s 00v 00u 00r
 
-S00show:	S00s
+S00t:	S00targets
+S00s:	S00show
+S00e:	S00edit
+S00i:	S00info
+S00i:	S00readme
+S00v:	S00build
+S00v:	S00verify
+S00u:	S00upload
+S00r:	S00run
 
-S00edit:	S00e
-
-S00info:	S00i
-
-S00readme:	S00i
-
-S00build:	S00v
-
-S00verify:	S00v
-
-S00upload:	S00u
-
-S00run:		S00r
-
-S00:	S00s S00v S00u S00r
-
-S00t:
+S00targets:
 	@/bin/echo -n "$$ "
 	make targets | grep '^S00' | cat -n
 
-S00s:
+S00show:
 	$(MAKE) _show TARGET=$(TARGET_00)
 
-S00e:
+S00edit:
 	$(MAKE) _edit TARGET=$(TARGET_00)
 
-S00i:
+S00info:
 	$(MAKE) _readme TARGET=$(TARGET_00)
 
-S00v:
+S00verify:
 	$(MAKE) _verify TARGET=$(TARGET_00)
 
-S00u:
+S00upload:
 	$(MAKE) _upload TARGET=$(TARGET_00)
 
-S00r:
+S00run:
 	$(MAKE) _run TARGET=$(TARGET_00)
 
 # ----------------------------------------------------------
 
 TARGET_01 = sketch_01_20241101a_BlinkOverI2C
 
-S01targets:	S01t
+S01:	S01s 01v 01u 01r
 
-S01show:	S01s
+S01t:	S01targets
+S01s:	S01show
+S01e:	S01edit
+S01i:	S01info
+S01i:	S01readme
+S01v:	S01build
+S01v:	S01verify
+S01u:	S01upload
+S01r:	S01run
 
-S01edit:	S01e
-
-S01info:	S01i
-
-S01readme:	S01i
-
-S01build:	S01v
-
-S01verify:	S01v
-
-S01upload:	S01u
-
-S01run:		S01r
-
-S01:	S01s S01v S01u S01r
-
-S01t:
+S01targets:
 	@/bin/echo -n "$$ "
-	$(MAKE) targets | grep '^S01' | cat -n
+	make targets | grep '^S01' | cat -n
 
-S01s:
+S01show:
 	$(MAKE) _show TARGET=$(TARGET_01)
 
-S01e:
+S01edit:
 	$(MAKE) _edit TARGET=$(TARGET_01)
 
-S01i:
+S01info:
 	$(MAKE) _readme TARGET=$(TARGET_01)
 
-S01v:
+S01verify:
 	$(MAKE) _verify TARGET=$(TARGET_01)
 
-S01u:
+S01upload:
 	$(MAKE) _upload TARGET=$(TARGET_01)
 
-S01r:
+S01run:
 	$(MAKE) _run TARGET=$(TARGET_01)
 
 # ----------------------------------------------------------
-
 
 _show:
 	(cd $(TARGET) \
