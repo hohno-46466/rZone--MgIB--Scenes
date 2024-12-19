@@ -99,6 +99,39 @@ S01run:
 
 # ----------------------------------------------------------
 
+TARGET_02 = sketch_02_20241219a_I2Cscanner
+
+S02:	S02s 02v 02u 02r
+
+S02t:	S02targets
+S02i:	S02info
+S02s:	S02show
+S02e:	S02edit
+S02b:	S02build
+S02v:	S02verify
+S02u:	S02upload
+S02r:	S02run
+
+S02targets:
+	@/bin/echo -n "$$ "
+	make targets | grep '^S02' | cat -n
+S02readme:	S02info
+S02info:
+	$(MAKE) _readme TARGET=$(TARGET_02)
+S02show:
+	$(MAKE) _show TARGET=$(TARGET_02)
+S02edit:
+	$(MAKE) _edit TARGET=$(TARGET_02)
+S02build:	S02verify
+S02verify:
+	$(MAKE) _verify TARGET=$(TARGET_02)
+S02upload:
+	$(MAKE) _upload TARGET=$(TARGET_02)
+S02run:
+	$(MAKE) _run TARGET=$(TARGET_02)
+
+# ----------------------------------------------------------
+
 _show:
 	(cd $(TARGET) \
 	&& cat -n $(TARGET).ino)
