@@ -1,5 +1,5 @@
 //
-// sketch_20241101a_BlinkOverI2C.ino
+// sketch_02_20241101a_BlinkOverI2C.ino
 //
 
 // Blink LEDs on PCAL9554B breakout board over I2C
