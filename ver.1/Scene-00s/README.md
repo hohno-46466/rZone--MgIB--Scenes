@@ -22,6 +22,22 @@ Sketches and scripts for MgIB scenes
      
      6 directories, 11 files (Sat Dec 21 12:32:33 JST 2024)
 
+* sketch_00_20241221a_EmptySketch
+
+  * 空のスケッチ
+
+* sketch_01_20241206a_Blink
+
+  * いわゆるLチカ
+
+* sketch_02_20241101a_BlinkOverI2C
+
+  * I2C GPIO に接続した LED も Lチカ
+
+* sketch_03_20241219a_I2Cscanner
+
+  * I2C スキャナ
+
 <!--
 #    ./Scene-00s
 #     ├──  Makefile
