@@ -26,7 +26,7 @@ FQBN = arduino:avr:uno
 # ----------------------------------------------------------
 
 TARGET_XX = sketch_xx_20241208a_dummy
-TARGET_00 = sketch_00_20241221a_Blank
+TARGET_00 = sketch_00_20241221a_EmptySketch
 TARGET_01 = sketch_01_20241206a_Blink
 TARGET_02 = sketch_02_20241101a_BlinkOverI2C
 TARGET_03 = sketch_03_20241219a_I2Cscanner
